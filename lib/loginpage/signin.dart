@@ -15,7 +15,7 @@ class sigin extends StatelessWidget {
                 color: Colors.blue, borderRadius: BorderRadius.circular(15.0)),
             child: Center(
                 child: Text(
-              "sigin",
+              "Sign in ",
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.white,

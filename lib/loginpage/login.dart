@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tourism_application/SquaretTile.dart';
+import 'package:tourism_application/loginpage/Passwordfield.dart';
 import 'package:tourism_application/loginpage/signin.dart';
 import 'package:tourism_application/loginpage/textfiled.dart';
 
@@ -20,8 +21,10 @@ class loginPage extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.black,
         body: SafeArea(
-            child: Center(
-                child: Column(
+            child: SingleChildScrollView(
+                child: Center(
+                    child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(height: 50),
             //logo
@@ -35,12 +38,24 @@ class loginPage extends StatelessWidget {
 
             //welcome back message
             Text(
-              'Welcome back , you have been missed gggggg',
+              'Welcome back ',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 16,
               ),
             ),
+
+            const SizedBox(
+              height: 4,
+            ),
+            Text(
+              'Please login to your account ',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+              ),
+            ),
+
             const SizedBox(height: 50),
 
             //username textfield
@@ -52,35 +67,7 @@ class loginPage extends StatelessWidget {
             const SizedBox(height: 20),
 
             //password textfield
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 25.0),
-              child: TextField(
-                obscureText: visibaleicon ? true : false,
-                decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.lock),
-                    suffixIcon: IconButton(
-                      onPressed: () {
-                        //setState((){});
-                      },
-                      icon: passwordIcon,
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: const Color.fromARGB(109, 255, 255, 255)),
-                      borderRadius:
-                          BorderRadius.circular(10.0), // Set borderRadius here
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: const Color.fromARGB(109, 255, 255, 255)),
-                      borderRadius:
-                          BorderRadius.circular(10.0), // Set borderRadius here
-                    ),
-                    fillColor: Colors.grey,
-                    filled: true,
-                    hintText: "Enter your password "),
-              ),
-            ),
+            PasswordField(),
 
             const SizedBox(height: 10),
             // forgot password button
@@ -169,6 +156,6 @@ class loginPage extends StatelessWidget {
               ],
             )
           ],
-        ))));
+        )))));
   }
 }
