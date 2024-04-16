@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tourism_application/SquaretTile.dart';
-import 'package:tourism_application/loginpage/Passwordfield.dart';
 import 'package:tourism_application/loginpage/signin.dart';
 import 'package:tourism_application/loginpage/textfiled.dart';
 
@@ -12,8 +11,7 @@ class loginPage extends StatelessWidget {
 
   //controller for text
   final usernamecontroller = TextEditingController();
-  bool visibaleicon = false;
-  Icon passwordIcon = Icon(Icons.visibility_off);
+
   // sigin methode
   void SgininMethod() {}
   @override
@@ -67,7 +65,6 @@ class loginPage extends StatelessWidget {
             const SizedBox(height: 20),
 
             //password textfield
-            PasswordField(),
 
             const SizedBox(height: 10),
             // forgot password button
