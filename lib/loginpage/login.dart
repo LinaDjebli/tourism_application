@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:tourism_application/SquaretTile.dart';
 import 'package:tourism_application/loginpage/signin.dart';
 import 'package:tourism_application/loginpage/textfiled.dart';
 
@@ -12,7 +13,8 @@ class loginPage extends StatelessWidget {
   final usernamecontroller = TextEditingController();
   bool visibaleicon = false;
   Icon passwordIcon = Icon(Icons.visibility_off);
-
+  // sigin methode
+  void SgininMethod() {}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +23,7 @@ class loginPage extends StatelessWidget {
             child: Center(
                 child: Column(
           children: [
-            SizedBox(height: 100),
+            SizedBox(height: 50),
             //logo
             Icon(
               Icons.lock,
@@ -29,7 +31,7 @@ class loginPage extends StatelessWidget {
               color: Colors.white,
             ),
 
-            const SizedBox(height: 50),
+            const SizedBox(height: 25),
 
             //welcome back message
             Text(
@@ -47,7 +49,7 @@ class loginPage extends StatelessWidget {
               hintext: 'Enter your Email or Username ',
               obscuretext: false,
             ),
-            const SizedBox(height: 25),
+            const SizedBox(height: 20),
 
             //password textfield
             Padding(
@@ -100,9 +102,72 @@ class loginPage extends StatelessWidget {
 
             const SizedBox(height: 25),
             // sign in button
-            sigin(),
+            sigin(
+              onTap: SgininMethod,
+            ),
+            const SizedBox(height: 25),
+            //continue with
+            Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Divider(
+                        thickness: 0.5,
+                        color: Colors.grey[400],
+                      ),
+                    ),
+                    Text(
+                      'Or continue with ',
+                      style: TextStyle(
+                        color: Colors.grey,
+                      ),
+                    ),
+                    Expanded(
+                        child: Divider(
+                      thickness: 0.5,
+                      color: Colors.grey[400],
+                    ))
+                  ],
+                )),
 
-            //not a memeber regiter now
+            const SizedBox(
+              height: 25,
+            ),
+
+            //google and apple sign in
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SquareTile(imagepath: 'lib/photos/google.png'),
+                const SizedBox(width: 15),
+                SquareTile(
+                    imagepath:
+                        'lib/photos/kisspng-apple-iphone-5af7d926427d25.7954913915261924222724.png')
+              ],
+            ),
+
+            //regester now
+            const SizedBox(
+              height: 25,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Not a memeber ? ",
+                  style: TextStyle(color: Colors.white),
+                ),
+                const SizedBox(
+                  width: 4,
+                ),
+                Text(
+                  "Regester now ",
+                  style: TextStyle(
+                      color: Colors.blue, fontWeight: FontWeight.bold),
+                )
+              ],
+            )
           ],
         ))));
   }
