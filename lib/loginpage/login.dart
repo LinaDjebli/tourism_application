@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tourism_application/SquaretTile.dart';
+import 'package:tourism_application/loginpage/Passwordfield.dart';
 import 'package:tourism_application/loginpage/signin.dart';
 import 'package:tourism_application/loginpage/textfiled.dart';
 
@@ -62,9 +63,12 @@ class loginPage extends StatelessWidget {
               hintext: 'Enter your Email or Username ',
               obscuretext: false,
             ),
+
             const SizedBox(height: 20),
 
             //password textfield
+
+            PasswordField(),
 
             const SizedBox(height: 10),
             // forgot password button

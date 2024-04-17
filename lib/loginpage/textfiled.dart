@@ -4,15 +4,17 @@ class textfiled extends StatelessWidget {
   final controller;
   final String hintext;
   final bool obscuretext;
-  const textfiled(
-      {super.key,
-      required this.controller,
-      required this.hintext,
-      required this.obscuretext});
+
+  textfiled({
+    Key? key,
+    required this.controller,
+    required this.hintext,
+    required this.obscuretext,
+  });
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+      padding: EdgeInsets.symmetric(horizontal: 25.0),
       child: TextField(
         controller: controller,
         obscureText: obscuretext,
