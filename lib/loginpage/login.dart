@@ -146,14 +146,15 @@ class loginPage extends StatelessWidget {
                   "Not a memeber ? ",
                   style: TextStyle(color: Colors.white),
                 ),
-                const SizedBox(
-                  width: 4,
-                ),
-                Text(
-                  "Regester now ",
-                  style: TextStyle(
-                      color: Colors.blue, fontWeight: FontWeight.bold),
-                )
+                TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text(
+                      "Regester now ",
+                      style: TextStyle(
+                          color: Colors.blue, fontWeight: FontWeight.bold),
+                    ))
               ],
             )
           ],

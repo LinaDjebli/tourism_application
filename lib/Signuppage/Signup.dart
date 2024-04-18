@@ -1,17 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:tourism_application/Signuppage/CheckBox.dart';
+import 'package:tourism_application/SquaretTile.dart';
 import 'package:tourism_application/loginpage/Passwordfield.dart';
+import 'package:tourism_application/loginpage/login.dart';
+import 'package:tourism_application/loginpage/signin.dart';
 import 'package:tourism_application/loginpage/textfiled.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SignupPage extends StatelessWidget {
   final firstnamecntr = TextEditingController();
   final lastnamecntr = TextEditingController();
   final EmailInputElement = TextEditingController();
+  final Uri Privacypol =
+      Uri.parse("https://pub.dev/packages/url_launcher/install");
+
+  Future<void> LauncheUri() async {
+    try {
+      await launchUrl(Privacypol);
+    } catch (err) {}
+  }
 
   SignupPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+
     return Scaffold(
         backgroundColor: Colors.black,
         body: SafeArea(
@@ -93,48 +107,108 @@ class SignupPage extends StatelessWidget {
                 hintText: "confirm your password ",
               ),
               SizedBox(
+                height: 15,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 12,
+                  ),
+                  CheckboxExample(),
+                  Text(
+                    "I agree with ",
+                    style: TextStyle(color: Colors.red, fontSize: 16),
+                  ),
+                  InkWell(
+                      child: Text(
+                        "Privacy Policy",
+                        style: TextStyle(
+                            color: Colors.blue,
+                            decoration: TextDecoration.underline,
+                            fontSize: 16),
+                      ),
+                      onTap: () {
+                        LauncheUri();
+                      })
+                ],
+              ),
+
+              const SizedBox(height: 20),
+              // sign in button
+
+              // sign in button
+              sigin(
+                onTap: SgininMethod,
+              ),
+              const SizedBox(height: 25),
+              Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Divider(
+                          thickness: 0.5,
+                          color: Colors.grey[400],
+                        ),
+                      ),
+                      Text(
+                        'Or continue with ',
+                        style: TextStyle(
+                          color: Colors.grey,
+                        ),
+                      ),
+                      Expanded(
+                          child: Divider(
+                        thickness: 0.5,
+                        color: Colors.grey[400],
+                      ))
+                    ],
+                  )),
+
+              const SizedBox(
                 height: 25,
               ),
-              CheckboxExample(),
+
+              //google and apple sign in
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SquareTile(imagepath: 'lib/photos/google.png'),
+                  const SizedBox(width: 15),
+                  SquareTile(
+                      imagepath:
+                          'lib/photos/kisspng-apple-iphone-5af7d926427d25.7954913915261924222724.png')
+                ],
+              ),
+
+              const SizedBox(
+                height: 25,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Have an account  ? ",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => loginPage()),
+                        );
+                      },
+                      child: Text(
+                        "Log in  ",
+                        style: TextStyle(
+                            color: Colors.blue, fontWeight: FontWeight.bold),
+                      ))
+                ],
+              )
             ]),
           )),
         ));
   }
-}
 
-class CheckboxExample extends StatefulWidget {
-  const CheckboxExample({super.key});
-
-  @override
-  State<CheckboxExample> createState() => _CheckboxExampleState();
-}
-
-class _CheckboxExampleState extends State<CheckboxExample> {
-  bool isChecked = false;
-
-  @override
-  Widget build(BuildContext context) {
-    Color getColor(Set<MaterialState> states) {
-      const Set<MaterialState> interactiveStates = <MaterialState>{
-        MaterialState.pressed,
-        MaterialState.hovered,
-        MaterialState.focused,
-      };
-      if (states.any(interactiveStates.contains)) {
-        return Colors.blue;
-      }
-      return Colors.white;
-    }
-
-    return Checkbox(
-      checkColor: Colors.white,
-      fillColor: MaterialStateProperty.resolveWith(getColor),
-      value: isChecked,
-      onChanged: (bool? value) {
-        setState(() {
-          isChecked = value!;
-        });
-      },
-    );
-  }
+  SgininMethod() {}
 }
