@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:tourism_application/Signuppage/CheckBox.dart';
-import 'package:tourism_application/SquaretTile.dart';
-import 'package:tourism_application/loginpage/Passwordfield.dart';
+import 'package:tourism_application/Componants/CheckBox.dart';
+import 'package:tourism_application/Componants/SquaretTile.dart';
+import 'package:tourism_application/Componants/Passwordfield.dart';
 import 'package:tourism_application/loginpage/login.dart';
 import 'package:tourism_application/loginpage/signin.dart';
-import 'package:tourism_application/loginpage/textfiled.dart';
+import 'package:tourism_application/Componants/textfiled.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SignupPage extends StatelessWidget {
@@ -139,6 +139,7 @@ class SignupPage extends StatelessWidget {
               // sign in button
               sigin(
                 onTap: SgininMethod,
+                btntext: "Sign in ",
               ),
               const SizedBox(height: 25),
               Padding(

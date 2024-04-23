@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:tourism_application/SquaretTile.dart';
-import 'package:tourism_application/loginpage/Passwordfield.dart';
+import 'package:tourism_application/Componants/SquaretTile.dart';
+import 'package:tourism_application/Componants/Passwordfield.dart';
 import 'package:tourism_application/loginpage/signin.dart';
-import 'package:tourism_application/loginpage/textfiled.dart';
+import 'package:tourism_application/Componants/textfiled.dart';
 
 double radius = 10.0;
 
@@ -92,6 +92,7 @@ class loginPage extends StatelessWidget {
             // sign in button
             sigin(
               onTap: SgininMethod,
+              btntext: "Log in ",
             ),
             const SizedBox(height: 25),
             //continue with
