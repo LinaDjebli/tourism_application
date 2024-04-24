@@ -1,112 +1,125 @@
 import 'package:flutter/material.dart';
+import 'package:tourism_application/Componants/SelectChip.dart';
+import 'package:tourism_application/Componants/SquaretTile.dart';
 
 class GuideSignup extends StatefulWidget {
   const GuideSignup({super.key});
   @override
   State<StatefulWidget> createState() {
+    ;
     // TODO: implement createState
     return _GuideSignup();
   }
 }
 
 class _GuideSignup extends State<GuideSignup> {
+  List<String> selectedItems = [];
+  void _openMultiSelect() async {
+    final List<String> items = ["English", "Francais", "Italian", "Arabic"];
+    final List<String>? results = await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return MultiSelect(
+          items: items,
+          Text: "choose your language ",
+        );
+      },
+    );
+
+    if (results != null) {
+      setState(() {
+        selectedItems = results;
+      });
+    }
+  }
+
   List<String> SelectedItems = [];
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      body: Padding(
-          padding: EdgeInsets.all(25),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ElevatedButton(
-                  onPressed: _onpressedmethode,
-                  child: const Text("Select your spoken languages ")),
-              const Divider(
-                height: 30,
+      backgroundColor: Colors.black,
+      body: SafeArea(
+          child: SingleChildScrollView(
+              child: Column(children: [
+        const SizedBox(height: 50),
+        Row(
+          children: [
+            SizedBox(
+              width: 30,
+            ),
+            Text(
+              "Fill in your informations",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                //font fam to add later
               ),
-              Wrap(
-                children:
-                    SelectedItems.map((e) => Chip(label: Text(e))).toList(),
-              )
-            ],
-          )),
-    );
-  }
-
-  void _onpressedmethode() async {
-    final List<String> Items = [
-      "English",
-      "Francais"
-          "Italian",
-      "Arabic"
-    ];
-    final List<String> results = await showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return MultiSelect(items: Items);
-        });
-
-    if (results != null) {
-      setState(() {
-        SelectedItems = results;
-      });
-    }
-  }
-}
-
-class MultiSelect extends StatefulWidget {
-  final List<String> items;
-  const MultiSelect({Key? key, required this.items}) : super(key: key);
-
-  @override
-  State<MultiSelect> createState() {
-    return MultiSelectState();
-  }
-}
-
-class MultiSelectState extends State<MultiSelect> {
-  final List<String> _SelectedItems = [];
-
-  void _itemChange(String Itemvalue, bool isSelected) {
-    if (isSelected) {
-      _SelectedItems.add(Itemvalue);
-    } else {
-      _SelectedItems.remove(Itemvalue);
-    }
-  }
-
-  void _canel() {
-    Navigator.pop(context);
-  }
-
-  void _submit() {
-    Navigator.pop(context, _SelectedItems);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
-      title: Text("Choose your languages "),
-      content: SingleChildScrollView(
-        child: ListBody(
-          children: widget.items
-              .map((item) => CheckboxListTile(
-                  value: _SelectedItems.contains(item),
-                  title: Text(item),
-                  controlAffinity: ListTileControlAffinity.leading,
-                  onChanged: (isCheked) => _itemChange(item, isCheked!)))
+            ),
+          ],
+        ),
+        Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+          SizedBox(
+            height: 150,
+            width: 180,
+            child: Image.asset("lib/photos/4722714.jpg"),
+          ),
+        ]),
+        SizedBox(
+          height: 25,
+        ),
+        Row(
+          children: [
+            SizedBox(
+              width: 30,
+            ),
+            Text(
+              "chose your spoen languages",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                //font fam to add later
+              ),
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 25,
+        ),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: Colors.grey,
+            onPrimary: Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10), // Rounded corners
+            ),
+            minimumSize: Size(350, 60),
+          ),
+          onPressed: _openMultiSelect,
+          child: const Text(
+            "Please select the languages you speak ",
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Wrap(
+          children: selectedItems
+              .map((item) => Chip(
+                    backgroundColor: Colors.grey,
+                    label: Text(item),
+                    onDeleted: () {
+                      setState(() {
+                        selectedItems.remove(item);
+                      });
+                    },
+                  ))
               .toList(),
         ),
-      ),
-      actions: [
-        TextButton(onPressed: _canel, child: const Text("Cancel")),
-        ElevatedButton(
-          onPressed: _submit,
-          child: const Text("Submit"),
-        )
-      ],
+      ]))),
     );
   }
 }
