@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tourism_application/Componants/SquaretTile.dart';
 import 'package:tourism_application/Componants/Passwordfield.dart';
+import 'package:tourism_application/Signuppage/Signup.dart';
 import 'package:tourism_application/loginpage/signin.dart';
 import 'package:tourism_application/Componants/textfiled.dart';
 
@@ -149,7 +150,10 @@ class loginPage extends StatelessWidget {
                 ),
                 TextButton(
                     onPressed: () {
-                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SignupPage()),
+                      );
                     },
                     child: Text(
                       "Regester now ",

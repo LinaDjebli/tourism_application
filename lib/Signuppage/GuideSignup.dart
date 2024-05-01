@@ -5,6 +5,8 @@ import 'package:tourism_application/Componants/List_Of_States.dart';
 import 'package:tourism_application/Componants/SelectChip.dart';
 import 'package:tourism_application/Componants/SquaretTile.dart';
 import 'package:tourism_application/Componants/textfiled.dart';
+import 'package:tourism_application/LOginChoice.dart';
+import 'package:tourism_application/loginpage/login.dart';
 import 'package:tourism_application/loginpage/signin.dart';
 
 class GuideSignup extends StatefulWidget {
@@ -344,7 +346,7 @@ class _GuideSignup extends State<GuideSignup> {
               ),
               sigin(
                 onTap: siginmethod(),
-                btntext: "create account",
+                btntext: "continue",
               ),
             ],
           ),
@@ -354,4 +356,209 @@ class _GuideSignup extends State<GuideSignup> {
   }
 
   siginmethod() {}
+}
+
+class GuideSingupPageTwo extends StatefulWidget {
+  const GuideSingupPageTwo({super.key});
+
+  @override
+  State<GuideSingupPageTwo> createState() => _GuideSingupPageTwoState();
+}
+
+class _GuideSingupPageTwoState extends State<GuideSingupPageTwo> {
+  bool isSelected = false;
+  bool ismen = false;
+  bool iswoemn = false;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        backgroundColor: Colors.black,
+        body: SafeArea(
+            child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(height: 50),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Text(
+                    "Profile Details",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      //font fam to add later
+                    ),
+                  ),
+                ],
+              ),
+              Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                SizedBox(
+                  height: 150,
+                  width: 150,
+                  child: Image.asset(
+                      "lib/photos/0e6227f38b13826f71f6fce067df96f7-removebg-preview.png"),
+                ),
+              ]),
+              SizedBox(
+                height: 25,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Text(
+                    "Tell us a bit about yourself ",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      //font fam to add later
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 25,
+              ),
+              SizedBox(
+                width: 350,
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      isSelected = true;
+                      ismen = true;
+                      iswoemn = false;
+                    });
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: isSelected && ismen && !iswoemn
+                          ? Colors.blue // Change color when selected
+                          : const Color.fromARGB(255, 102, 100, 100),
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(
+                          color: isSelected && ismen && !iswoemn
+                              ? Colors.blue
+                              : const Color.fromARGB(255, 135, 133,
+                                  133), // Change border color when selected
+                          width: 2), // Increase border width when selected
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.2),
+                          spreadRadius: 2,
+                          blurRadius: 4,
+                          offset:
+                              const Offset(0, 2), // shadow direction: bottom
+                        ),
+                        BoxShadow(
+                          color: const Color.fromARGB(255, 108, 106, 106)
+                              .withOpacity(0.5),
+                          spreadRadius: 2,
+                          blurRadius: 4,
+                          offset: const Offset(0, -2), // shadow direction: top
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Container(
+                            padding: const EdgeInsets.all(1),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            child: Image.asset(
+                              "lib/photos/casual-life-3d-profile-picture-of-man-in-green-shirt-and-orange-hat.png",
+                              height: 80,
+                            )),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          " i am a man  ",
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 16),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 25,
+              ),
+              SizedBox(
+                width: 350,
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      isSelected = true;
+                      iswoemn = true;
+                      ismen = false;
+                    });
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: isSelected && iswoemn && !ismen
+                          ? Colors.blue // Change color when selected
+                          : const Color.fromARGB(255, 102, 100, 100),
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(
+                          color: isSelected && iswoemn && !ismen
+                              ? Colors.blue
+                              : const Color.fromARGB(255, 135, 133,
+                                  133), // Change border color when selected
+                          width: 2), // Increase border width when selected
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.2),
+                          spreadRadius: 2,
+                          blurRadius: 4,
+                          offset:
+                              const Offset(0, 2), // shadow direction: bottom
+                        ),
+                        BoxShadow(
+                          color: const Color.fromARGB(255, 108, 106, 106)
+                              .withOpacity(0.5),
+                          spreadRadius: 2,
+                          blurRadius: 4,
+                          offset: const Offset(0, -2), // shadow direction: top
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Container(
+                            padding: const EdgeInsets.all(1),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            child: Image.asset(
+                              "lib/photos/3d-casual-life-avatar-girl-with-hair.png",
+                              height: 80,
+                            )),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          " i am a Women ",
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 16),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        )));
+  }
 }
