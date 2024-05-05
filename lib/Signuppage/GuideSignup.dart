@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:intl/intl.dart';
 import 'package:tourism_application/Componants/List_Of_States.dart';
@@ -8,6 +11,7 @@ import 'package:tourism_application/Componants/textfiled.dart';
 import 'package:tourism_application/LOginChoice.dart';
 import 'package:tourism_application/loginpage/login.dart';
 import 'package:tourism_application/loginpage/signin.dart';
+import 'package:image_picker/image_picker.dart';
 
 class GuideSignup extends StatefulWidget {
   const GuideSignup({super.key});
@@ -24,6 +28,7 @@ class _GuideSignup extends State<GuideSignup> {
   TextEditingController datecontroller = TextEditingController();
   TextEditingController _controller = TextEditingController();
   FocusNode _Focusenode = FocusNode();
+  TextEditingController Lastnamecontroller = TextEditingController();
 
   void _openMultiSelect() async {
     final List<String> items = ["English", "Francais", "Italian", "Arabic"];
@@ -369,6 +374,10 @@ class _GuideSingupPageTwoState extends State<GuideSingupPageTwo> {
   bool isSelected = false;
   bool ismen = false;
   bool iswoemn = false;
+  File? image;
+  final WhatDoYouDo = TextEditingController();
+  final Namecontroller = TextEditingController();
+  final LastNamecontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -412,6 +421,25 @@ class _GuideSingupPageTwoState extends State<GuideSingupPageTwo> {
                   ),
                   Text(
                     "Tell us a bit about yourself ",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      //font fam to add later
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 25,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Text(
+                    "choose your sex  ",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 16,
@@ -474,7 +502,7 @@ class _GuideSingupPageTwoState extends State<GuideSingupPageTwo> {
                             ),
                             child: Image.asset(
                               "lib/photos/casual-life-3d-profile-picture-of-man-in-green-shirt-and-orange-hat.png",
-                              height: 80,
+                              height: 60,
                             )),
                         const SizedBox(
                           width: 5,
@@ -542,7 +570,7 @@ class _GuideSingupPageTwoState extends State<GuideSingupPageTwo> {
                             ),
                             child: Image.asset(
                               "lib/photos/3d-casual-life-avatar-girl-with-hair.png",
-                              height: 80,
+                              height: 60,
                             )),
                         const SizedBox(
                           width: 5,
@@ -557,8 +585,209 @@ class _GuideSingupPageTwoState extends State<GuideSingupPageTwo> {
                   ),
                 ),
               ),
+              SizedBox(
+                height: 25,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Text(
+                    "What do you do ",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      //font fam to add later
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Text(
+                    "Describe yourslef in less than 200 character  ",
+                    style: TextStyle(
+                      color: const Color.fromARGB(255, 239, 236, 236)
+                          .withOpacity(0.7),
+
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      //font fam to add later
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              textfiled(
+                  controller: WhatDoYouDo,
+                  hintext: "describe your experince  ",
+                  obscuretext: false),
+              SizedBox(
+                height: 25,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Text(
+                    "Choose a profile picture ",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      //font fam to add later
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              image != null
+                  ? ClipOval(
+                      child: Image.file(
+                        image!,
+                        width: 160,
+                        height: 160,
+                        fit: BoxFit.cover,
+                      ),
+                    )
+                  : SizedBox(
+                      width: 200,
+                      height: 200,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white)),
+                        child: Icon(
+                          Icons.person,
+                          color: Colors.white,
+                          size: 200,
+                        ),
+                      ),
+                    ),
+              SizedBox(
+                height: 25,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Text(
+                    "Confirm your username ",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      //font fam to add later
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Text(
+                    "confirm your first and last name  ",
+                    style: TextStyle(
+                      color: const Color.fromARGB(255, 239, 236, 236)
+                          .withOpacity(0.7),
+
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      //font fam to add later
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Text(
+                    "First name ",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      //font fam to add later
+                    ),
+                  ),
+                ],
+              ),
+              textfiled(
+                  controller: Namecontroller,
+                  hintext: "name",
+                  obscuretext: false),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Text(
+                    "Last Name  ",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      //font fam to add later
+                    ),
+                  ),
+                ],
+              ),
+              textfiled(
+                  controller: LastNamecontroller,
+                  hintext: "name",
+                  obscuretext: false),
+              Padding(
+                padding: const EdgeInsets.all(20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    sigin(
+                      onTap: siginmethod(),
+                      btntext: "       Back       ",
+                    ),
+                    sigin(
+                      onTap: siginmethod(),
+                      btntext: "    continue    ",
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         )));
+  }
+
+  siginmethod() {}
+  Future pickImage(ImageSource source) async {
+    try {
+      final image = await ImagePicker().pickImage(source: source);
+      if (image == null) {
+        return null;
+      }
+      final Imagepath = File(image.path);
+      setState(() {
+        this.image = Imagepath;
+        // ignore: empty_catches
+      });
+    } on PlatformException catch (e) {
+      print("Failed to pick an image $e");
+    }
   }
 }
