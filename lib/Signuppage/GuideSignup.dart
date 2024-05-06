@@ -374,10 +374,9 @@ class _GuideSingupPageTwoState extends State<GuideSingupPageTwo> {
   bool isSelected = false;
   bool ismen = false;
   bool iswoemn = false;
-  File? image;
+
   final WhatDoYouDo = TextEditingController();
-  final Namecontroller = TextEditingController();
-  final LastNamecontroller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -632,146 +631,192 @@ class _GuideSingupPageTwoState extends State<GuideSingupPageTwo> {
                   controller: WhatDoYouDo,
                   hintext: "describe your experince  ",
                   obscuretext: false),
-              SizedBox(
-                height: 25,
-              ),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 30,
-                  ),
-                  Text(
-                    "Choose a profile picture ",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      //font fam to add later
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              image != null
-                  ? ClipOval(
-                      child: Image.file(
-                        image!,
-                        width: 160,
-                        height: 160,
-                        fit: BoxFit.cover,
-                      ),
-                    )
-                  : SizedBox(
-                      width: 200,
-                      height: 200,
-                      child: Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white)),
-                        child: Icon(
-                          Icons.person,
-                          color: Colors.white,
-                          size: 200,
-                        ),
-                      ),
-                    ),
-              SizedBox(
-                height: 25,
-              ),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 30,
-                  ),
-                  Text(
-                    "Confirm your username ",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      //font fam to add later
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 30,
-                  ),
-                  Text(
-                    "confirm your first and last name  ",
-                    style: TextStyle(
-                      color: const Color.fromARGB(255, 239, 236, 236)
-                          .withOpacity(0.7),
-
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      //font fam to add later
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 30,
-                  ),
-                  Text(
-                    "First name ",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      //font fam to add later
-                    ),
-                  ),
-                ],
-              ),
-              textfiled(
-                  controller: Namecontroller,
-                  hintext: "name",
-                  obscuretext: false),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 30,
-                  ),
-                  Text(
-                    "Last Name  ",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      //font fam to add later
-                    ),
-                  ),
-                ],
-              ),
-              textfiled(
-                  controller: LastNamecontroller,
-                  hintext: "name",
-                  obscuretext: false),
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    sigin(
-                      onTap: siginmethod(),
-                      btntext: "       Back       ",
-                    ),
-                    sigin(
-                      onTap: siginmethod(),
-                      btntext: "    continue    ",
-                    ),
-                  ],
-                ),
-              ),
             ],
           ),
         )));
+  }
+
+  siginmethod() {}
+}
+
+class GuideSignupThree extends StatefulWidget {
+  const GuideSignupThree({super.key});
+
+  @override
+  State<GuideSignupThree> createState() => _GuideSignupThreeState();
+}
+
+class _GuideSignupThreeState extends State<GuideSignupThree> {
+  final Namecontroller = TextEditingController();
+  final LastNamecontroller = TextEditingController();
+  File? image;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: SafeArea(
+          child: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 25,
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 30,
+                ),
+                Text(
+                  "Choose a profile picture ",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    //font fam to add later
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 25,
+            ),
+            image != null
+                ? ClipOval(
+                    child: Image.file(
+                      image!,
+                      width: 160,
+                      height: 160,
+                      fit: BoxFit.cover,
+                    ),
+                  )
+                : SizedBox(
+                    width: 200,
+                    height: 200,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.white)),
+                      child: Icon(
+                        Icons.person,
+                        color: Colors.white,
+                        size: 200,
+                      ),
+                    ),
+                  ),
+            SizedBox(
+              height: 25,
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 30,
+                ),
+                Text(
+                  "Confirm your username ",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    //font fam to add later
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 25,
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 30,
+                ),
+                Text(
+                  "confirm your first and last name  ",
+                  style: TextStyle(
+                    color: const Color.fromARGB(255, 239, 236, 236)
+                        .withOpacity(0.7),
+
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    //font fam to add later
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 25,
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 30,
+                ),
+                Text(
+                  "First name ",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    //font fam to add later
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 25,
+            ),
+            textfiled(
+                controller: Namecontroller,
+                hintext: "First Name",
+                obscuretext: false),
+            SizedBox(
+              height: 25,
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 30,
+                ),
+                Text(
+                  "Last Name  ",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    //font fam to add later
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 25,
+            ),
+            textfiled(
+                controller: LastNamecontroller,
+                hintext: "Last Name",
+                obscuretext: false),
+            SizedBox(
+              height: 25,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  sigin(
+                    onTap: siginmethod(),
+                    btntext: "       Back       ",
+                  ),
+                  sigin(
+                    onTap: siginmethod(),
+                    btntext: "   Create Account   ",
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      )),
+    );
   }
 
   siginmethod() {}
