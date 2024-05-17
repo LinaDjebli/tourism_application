@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:tourism_application/Create%20Activity/ActivityCategory.dart';
 import 'package:tourism_application/LOginChoice.dart';
 import 'package:tourism_application/PhoneAuth/Phone_Auth_First_Page.dart';
+import 'package:tourism_application/Create%20Activity/CreateActivity.dart';
 import 'package:tourism_application/SelectIntrests.dart';
 import 'package:tourism_application/Signuppage/AgencySignup.dart';
 import 'package:tourism_application/Signuppage/GuideSignup.dart';
@@ -16,6 +18,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false, home: SelectIntrests());
+        debugShowCheckedModeBanner: false, home: ActivityCategory());
   }
 }

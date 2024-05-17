@@ -26,24 +26,23 @@ class _SelectItemState extends State<SelectItem> {
           decoration: BoxDecoration(
             color: isSelected
                 ? Colors.blue // Change color when selected
-                : const Color.fromARGB(255, 102, 100, 100),
+                : Color.fromARGB(255, 255, 255, 255),
             borderRadius: BorderRadius.circular(20),
             border: Border.all(
                 color: isSelected
                     ? Colors.blue
-                    : const Color.fromARGB(255, 135, 133,
-                        133), // Change border color when selected
+                    : const Color.fromARGB(
+                        255, 19, 83, 135), // Change border color when selected
                 width: 2), // Increase border width when selected
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.2),
+                color: Color.fromARGB(255, 255, 255, 255).withOpacity(0.2),
                 spreadRadius: 2,
                 blurRadius: 4,
                 offset: const Offset(0, 2), // shadow direction: bottom
               ),
               BoxShadow(
-                color:
-                    const Color.fromARGB(255, 108, 106, 106).withOpacity(0.5),
+                color: Color.fromARGB(255, 255, 255, 255).withOpacity(0.5),
                 spreadRadius: 2,
                 blurRadius: 4,
                 offset: const Offset(0, -2), // shadow direction: top
@@ -67,7 +66,8 @@ class _SelectItemState extends State<SelectItem> {
               ),
               Text(
                 widget.Text,
-                style: const TextStyle(color: Colors.white, fontSize: 16),
+                style: const TextStyle(
+                    color: Color.fromARGB(255, 0, 0, 0), fontSize: 16),
               )
             ],
           ),
