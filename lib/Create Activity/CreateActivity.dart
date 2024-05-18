@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:tourism_application/Componants/SizebaleTextField.dart';
 import 'package:tourism_application/Componants/textfiled.dart';
@@ -15,19 +17,13 @@ class _CreateActivityState extends State<CreateActivity> {
   TextEditingController Controller2 = TextEditingController();
   bool showHelpMessage = false;
 
-  void _toggleHelpMessage() {
-    setState(() {
-      showHelpMessage = !showHelpMessage;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     int characterCount = 0;
 
     bool showHelpMessage = false;
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: const Color.fromARGB(255, 176, 171, 171),
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: Text(
@@ -95,30 +91,16 @@ class _CreateActivityState extends State<CreateActivity> {
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     )),
-                IconButton(
-                    onPressed: _toggleHelpMessage,
-                    icon: Icon(
-                      Icons.help,
-                      color: Colors.white,
-                    ))
               ],
             ),
-            if (showHelpMessage)
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-                color: Colors.grey[200],
-                child: Text(
-                  'Help message: Please insert your text here.',
-                  style: TextStyle(
-                      color: const Color.fromARGB(255, 240, 240, 240)),
-                ),
-              ),
             gapH16,
             SizebaleTextfield(
               sizefield: 2,
               max: 12,
               controller: Controller2,
               hintText: "Enter your description here ",
+              iconVisible: false,
+              iconOnPressed: onPressed,
             ),
             gapH16,
           ],
@@ -126,4 +108,6 @@ class _CreateActivityState extends State<CreateActivity> {
       )),
     );
   }
+
+  void onPressed() {}
 }

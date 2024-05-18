@@ -48,6 +48,8 @@ dependencies:
   flutter_svg: ^2.0.10+1
   timeline_tile: ^2.0.0
   timelines: ^0.1.0
+  auto_size_text_field: ^2.2.3
+  link_text: ^0.2.1
 
 dev_dependencies:
 

@@ -18,7 +18,9 @@ class _HorizontalTimelineState extends State<HorizontalTimeline> {
     'Step 2',
     'Step 3',
     'Step 4',
-    "Step5 ",
+    "Step5",
+    'Step 6',
+    "Step7 ",
   ];
 
   late int _processIndex;

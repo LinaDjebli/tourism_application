@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 import 'package:tourism_application/Componants/My_Timeline.dart';
 import 'package:tourism_application/Componants/Selectitem.dart';
+import 'package:tourism_application/Create%20Activity/ActivityName.dart';
 import 'package:tourism_application/constrants/Size.dart';
 import 'package:tourism_application/loginpage/signin.dart';
 
@@ -44,7 +45,7 @@ class _ActivityCategoryState extends State<ActivityCategory> {
             Row(
               children: [
                 SizedBox(
-                  width: 30,
+                  width: 20,
                 ),
                 Text(
                   "Create a new  Activity ",
@@ -434,5 +435,8 @@ class _ActivityCategoryState extends State<ActivityCategory> {
     );
   }
 
-  nextMethod() {}
+  nextMethod() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => ActivityName()));
+  }
 }
