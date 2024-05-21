@@ -3,6 +3,7 @@ import 'package:tourism_application/Create%20Activity/ActivityCategory.dart';
 import 'package:tourism_application/Create%20Activity/ActivityLocation.dart';
 import 'package:tourism_application/Create%20Activity/ActivityName.dart';
 import 'package:tourism_application/Create%20Activity/ActivityPageFive.dart';
+import 'package:tourism_application/Create%20Activity/ActivityPageSeven.dart';
 import 'package:tourism_application/Create%20Activity/ActivityPageSix.dart';
 import 'package:tourism_application/LOginChoice.dart';
 import 'package:tourism_application/PhoneAuth/Phone_Auth_First_Page.dart';
@@ -22,6 +23,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false, home: ActivityPageSix());
+        debugShowCheckedModeBanner: false, home: ActivityPageSeven());
   }
 }

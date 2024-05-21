@@ -1,9 +1,27 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
+import 'package:multi_dropdown/multiselect_dropdown.dart';
 import 'package:tourism_application/Componants/My_Timeline.dart';
+import 'package:tourism_application/Componants/SelectButton.dart';
 import 'package:tourism_application/Componants/SelectChip.dart';
+import 'package:tourism_application/Componants/SizebaleTextField.dart';
+import 'package:tourism_application/Componants/Text&Field.dart';
 import 'package:tourism_application/Create%20Activity/ActivityCategory.dart';
 import 'package:tourism_application/constrants/Size.dart';
 import 'package:tourism_application/loginpage/signin.dart';
+import 'package:multi_dropdown/enum/app_enums.dart';
+import 'package:multi_dropdown/models/chip_config.dart';
+import 'package:multi_dropdown/models/network_config.dart';
+
+import "package:multi_dropdown/models/value_item.dart";
+
+import 'package:multi_dropdown/multiselect_dropdown.dart';
+import 'package:multi_dropdown/widgets/hint_text.dart';
+import 'package:multi_dropdown/widgets/selection_chip.dart';
+import 'package:multi_dropdown/widgets/single_selected_item.dart';
+import 'package:flutter/material.dart';
+import "package:multi_dropdown/models/value_item.dart";
 
 class ActivityPageFive extends StatefulWidget {
   const ActivityPageFive({super.key});
@@ -13,8 +31,11 @@ class ActivityPageFive extends StatefulWidget {
 }
 
 class _ActivityPageFiveState extends State<ActivityPageFive> {
+  TextEditingController UrlCotroller = TextEditingController();
+  MultiSelectController _controller = MultiSelectController();
   List<String> selectedItems = [];
-  int _selectedValue = 0;
+  int SlectedFood = 0;
+  int SelectedTransport = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,126 +83,38 @@ class _ActivityPageFiveState extends State<ActivityPageFive> {
               ],
             ),
             gapH16,
-            Wrap(
-              children: [
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Expanded(
-                      child: Row(
-                        children: [
-                          Text(
-                            "Who the costumer will interact with  ",
-                            style: TextStyle(
-                              color: const Color.fromARGB(255, 14, 64, 122),
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
-                              //font fam to add later
-                            ),
-
-                            softWrap:
-                                true, // Allows the text to wrap to the next line
-                          ),
-                          Tooltip(
-                            padding: EdgeInsets.all(20),
-                            message:
-                                "Specify people which the cosumer need to interact with ",
-                            child: Icon(
-                              Icons.info_outline,
-                              color: const Color.fromARGB(255, 27, 124, 235),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+            TextandField(
+                tooltipText:
+                    "Specify people which the cosumer need to interact with",
+                Text: "Who the costumer will interact with ",
+                TextSize: 17),
             gapH18,
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: Colors.grey,
-                onPrimary: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10), // Rounded corners
-                ),
-                minimumSize: Size(350, 60),
-              ),
-              onPressed: _openMultiSelect,
-              child: const Text(
-                "Select people",
-                style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 56, 53, 53)),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Wrap(
-              children: selectedItems
-                  .map((item) => Chip(
-                        backgroundColor: Colors.grey,
-                        label: Text(item),
-                        onDeleted: () {
-                          setState(() {
-                            selectedItems.remove(item);
-                          });
-                        },
-                      ))
-                  .toList(),
+            SelectButton(
+              sizeofwidth: 350,
+              Text: "Select a person ",
+              buttonText: 'Select Options',
+              listOfItems: <ItemValue<int>>[
+                ItemValue(label: 'Guide', value: 1),
+                ItemValue(label: 'Instrocure', value: 2),
+                ItemValue(label: 'Driver', value: 3),
+                ItemValue(label: 'Host', value: 4),
+              ],
+              textOfList: 'Options',
             ),
             gapH16,
-            Wrap(
-              children: [
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Expanded(
-                      child: Row(
-                        children: [
-                          Text(
-                            "is Food included ? ",
-                            style: TextStyle(
-                              color: const Color.fromARGB(255, 14, 64, 122),
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
-                              //font fam to add later
-                            ),
-
-                            softWrap:
-                                true, // Allows the text to wrap to the next line
-                          ),
-                          Tooltip(
-                            padding: EdgeInsets.all(20),
-                            message:
-                                "Specify the availibily of food and what meal to expect ",
-                            child: Icon(
-                              Icons.info_outline,
-                              color: const Color.fromARGB(255, 27, 124, 235),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+            TextandField(
+                tooltipText:
+                    "Specify the availibily of food and what meal to expect ",
+                Text: "is Food included ?",
+                TextSize: 17),
             Column(children: <Widget>[
               RadioListTile(
                 title: Text('Yes '),
                 value: 1,
-                groupValue: _selectedValue,
+                groupValue: SlectedFood,
                 onChanged: (value) {
                   setState(() {
-                    _selectedValue = value as int;
+                    SlectedFood = value as int;
                   });
                 },
               ),
@@ -189,64 +122,42 @@ class _ActivityPageFiveState extends State<ActivityPageFive> {
               RadioListTile(
                 title: Text('No'),
                 value: 2,
-                groupValue: _selectedValue,
+                groupValue: SlectedFood,
                 onChanged: (value) {
                   setState(() {
-                    _selectedValue = value as int;
+                    SlectedFood = value as int;
                   });
                 },
               ),
-              if (_selectedValue == 1) ...{
-                //2checkbooks for food choice
+              if (SlectedFood == 1) ...{
+                SelectButton(
+                  Text: "Select Meals",
+                  sizeofwidth: 200,
+                  listOfItems: <ItemValue<int>>[
+                    ItemValue(label: 'Coffe', value: 1),
+                    ItemValue(label: ' Lunch', value: 2),
+                    ItemValue(label: 'Afternoon Coffee', value: 3),
+                    ItemValue(label: ' Diner', value: 4),
+                  ],
+                  textOfList: "",
+                  buttonText: "Food",
+                )
               }
             ]),
             gapH18,
-            Wrap(
-              children: [
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Expanded(
-                      child: Row(
-                        children: [
-                          Text(
-                            "is Transport included ? ",
-                            style: TextStyle(
-                              color: const Color.fromARGB(255, 14, 64, 122),
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
-                              //font fam to add later
-                            ),
-
-                            softWrap:
-                                true, // Allows the text to wrap to the next line
-                          ),
-                          Tooltip(
-                            padding: EdgeInsets.all(20),
-                            message:
-                                "Define if trnasportation is included in this activity ",
-                            child: Icon(
-                              Icons.info_outline,
-                              color: const Color.fromARGB(255, 27, 124, 235),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+            TextandField(
+                tooltipText:
+                    "Define if trnasportation is included in this activity ",
+                Text: "is Transport included ? ",
+                TextSize: 17),
             Column(children: <Widget>[
               RadioListTile(
                 title: Text('Yes '),
                 value: 1,
-                groupValue: _selectedValue,
+                groupValue: SelectedTransport,
                 onChanged: (value) {
                   setState(() {
-                    _selectedValue = value as int;
+                    SelectedTransport = value as int;
                   });
                 },
               ),
@@ -254,16 +165,42 @@ class _ActivityPageFiveState extends State<ActivityPageFive> {
               RadioListTile(
                 title: Text('No'),
                 value: 2,
-                groupValue: _selectedValue,
+                groupValue: SelectedTransport,
                 onChanged: (value) {
                   setState(() {
-                    _selectedValue = value as int;
+                    SelectedTransport = value as int;
                   });
                 },
               ),
-              if (_selectedValue == 1) ...{
-                //slect  for transport choice
-                //and does the costumer travel ?
+              if (SelectedTransport == 1) ...{
+                Column(
+                  children: [
+                    SelectButton(
+                      Text: "Select Transport",
+                      sizeofwidth: 200,
+                      listOfItems: <ItemValue<int>>[
+                        ItemValue(label: 'car', value: 1),
+                        ItemValue(label: ' bus', value: 2),
+                        ItemValue(label: 'Baot', value: 3),
+                        ItemValue(label: ' Train', value: 4),
+                      ],
+                      textOfList: "",
+                      buttonText: "Transport",
+                    ),
+                    TextandField(
+                        tooltipText:
+                            "if the costuer travel from place to place where does he go ? ",
+                        Text: "Does the costumer change region ? ",
+                        TextSize: 17),
+                    SizebaleTextfield(
+                        controller: UrlCotroller,
+                        sizefield: 1,
+                        max: 10,
+                        hintText: "Url",
+                        iconVisible: false,
+                        iconOnPressed: onpressed)
+                  ],
+                )
               }
             ]),
             Container(
@@ -284,22 +221,5 @@ class _ActivityPageFiveState extends State<ActivityPageFive> {
         context, MaterialPageRoute(builder: (context) => ActivityCategory()));
   }
 
-  void _openMultiSelect() async {
-    final List<String> items = ["Driver", "Guide", " Nobody", "Instructor"];
-    final List<String>? results = await showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return MultiSelect(
-          items: items,
-          Text: "Select people  ",
-        );
-      },
-    );
-
-    if (results != null) {
-      setState(() {
-        selectedItems = results;
-      });
-    }
-  }
+  void onpressed() {}
 }
