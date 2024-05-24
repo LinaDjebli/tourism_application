@@ -13,6 +13,9 @@ import 'package:tourism_application/Signuppage/AgencySignup.dart';
 import 'package:tourism_application/Signuppage/GuideSignup.dart';
 import 'package:tourism_application/Signuppage/Signup.dart';
 import 'package:tourism_application/loginpage/login.dart';
+import 'package:tourism_application/loginpage/signin.dart';
+import 'dart:io';
+import 'dart:ffi';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +25,6 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false, home: ActivityPageSeven());
+    return MaterialApp(debugShowCheckedModeBanner: false, home: loginPage());
   }
 }
